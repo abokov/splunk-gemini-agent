@@ -1,0 +1,68 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Agentic Splunk SRE",
+    "description": "API for the Google ADK Agent that queries Splunk.",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/chat": {
+      "post": {
+        "summary": "Chat with the Splunk Agent",
+        "operationId": "chat_endpoint_chat_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChatRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChatResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ChatRequest": {
+        "properties": {
+          "prompt": {
+            "type": "string",
+            "title": "Prompt"
+          }
+        },
+        "type": "object",
+        "required": [
+          "prompt"
+        ],
+        "title": "ChatRequest"
+      },
+      "ChatResponse": {
+        "properties": {
+          "reply": {
+            "type": "string",
+            "title": "Reply"
+          }
+        },
+        "type": "object",
+        "required": [
+          "reply"
+        ],
+        "title": "ChatResponse"
+      }
+    }
+  }
+}
